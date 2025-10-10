@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunktreadyaparna_site=globalThis.webpackChunktreadyaparna_site||[]).push([[3490],{3490:(a,e,r)=>{r.d(e,{createInfoServices:()=>s.v});var s=r(1885);r(7960)}}]);
