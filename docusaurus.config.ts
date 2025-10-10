@@ -4,7 +4,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 const config: Config = {
   title: "Aparna Saha",
   tagline: "Personal Website",
-  // favicon: 'img/favicon.ico',
+  favicon: "img/favicon.png",
 
   // GitHub Pages user site → served at root
   url: "https://treadyaparna.github.io",
