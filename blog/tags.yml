@@ -1,0 +1,9 @@
+aws:
+  label: aws
+  permalink: /aws
+  description: AWS Cloud
+
+step-functions:
+  label: step-functions
+  permalink: /step-functions
+  description: Step Function Workflows
