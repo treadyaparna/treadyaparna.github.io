@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunktreadyaparna_site=globalThis.webpackChunktreadyaparna_site||[]).push([[7472],{5513:t=>{t.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Distributed Data Stream Aggregator with AWS Step Functions","permalink":"/blog/2025-10-10-distributed-data-stream-aggregator","unlisted":false,"date":"2025-10-10T00:00:00.000Z"}]}')}}]);
