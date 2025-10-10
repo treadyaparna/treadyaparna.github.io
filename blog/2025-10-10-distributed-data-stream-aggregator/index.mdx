@@ -57,7 +57,6 @@ flowchart TD
     B --> C["Express Child Workflows (API calls, pagination, partial writes to S3)"]
     B --> C2["Express Child Workflows..."]
     B --> C3["Express Child Workflows..."]
-
     B --> D["Glue Job (merge partial S3 files)"]
     D --> E["DynamoDB (status, counts, metadata)"]
 ```
@@ -120,13 +119,25 @@ Because Express workflows are lightweight and ephemeral, they're ideal for short
 
 A simplified flow inside an Express child might look like:
 
-1. Call API endpoint
-2. Check for `nextPageToken`
+```mermaid
+flowchart TD
+    A["Start Express workflow"] --> B["Call API endpoint"]
+    B --> C{nextPageToken?}
+    C -- Yes --> D["Write page results to S3"]
+    D --> E["Update counters/metadata"]
+    E --> B
+    C -- No --> F["Write final page (if any) to S3"]
+    F --> G["Assemble/emit metadata (record count, S3 prefix/key)"]
+    G --> H["Return metadata to Standard workflow"]
+    H --> I["End Express workflow"]
+```
 
+* Call API endpoint
+* Check for `nextPageToken`
    * If yes, loop / re-enter the state
    * If no, finish
-3. Accumulate or write result chunk(s) to S3
-4. Return a small metadata payload (e.g. record count, S3 key)
+* Accumulate or write result chunk(s) to S3
+* Return a small metadata payload (e.g. record count, S3 key)
 
 Because full datasets for a container may be large, the child never returns full data in the Step Functions state. Instead, it writes into S3 — e.g. `s3://bucket/jobID/containerX.json`.
 
@@ -204,7 +215,6 @@ Here's a hypothetical example run:
 1. Input includes 50 containers (e.g. locations) to process.
 2. Parent orchestrator uses Distributed Map to launch 50 child executions, but only 5 run concurrently (due to `MaxConcurrency = 5`).
 3. Each Express child:
-
    * Calls an external API endpoint
    * If the API returns a `nextPageToken`, loops until pagination is exhausted
    * Writes each page's data to `s3://bucket/job-123/containerX-pageY.json`
@@ -217,7 +227,7 @@ Here's a hypothetical example run:
 
 Here are steps you can follow to try this pattern:
 
-1. **Clone the sample repo** (linked in the PR) and examine the ASL definitions.
+1. **Clone the sample repo** (https://github.com/aws-samples/step-functions-workflows-collection/tree/main/distributed-data-stream-aggregator) and examine the ASL definitions.
 2. **Deploy the orchestration + children** via CloudFormation or CDK.
 3. **Write a Glue script** that merges JSON / CSV parts — this can be minimal.
 4. **Define your DynamoDB table** schema (job metadata).
@@ -237,5 +247,3 @@ You can also adapt parts:
 In this post, I've walked through a compelling, Lambda-less pattern for distributed data aggregation using AWS Step Functions, S3, Glue, and DynamoDB. By leveraging **Distributed Map** and offloading heavy work into managed services, you gain scalable, maintainable, and resilient workflows with less custom code.
 
 This approach is ideal when your data per entity is large, your orchestration logic is complex, and you want to reduce Lambda sprawl. That said, always balance tradeoffs (Glue latency, Express durability, cost) and experiment with tuning.
-
-👉 Explore the full implementation in the [GitHub pull request](https://github.com/aws-samples/step-functions-workflows-collection/pull/404) and try it in your own workflows.
