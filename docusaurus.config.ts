@@ -59,6 +59,7 @@ const config: Config = {
       //   src: 'img/logo.svg',
       // },
       items: [
+        { to: "/", label: "Introduction", position: "left" },
         { to: "/blog", label: "Blog", position: "left" },
         {
           href: "https://github.com/treadyaparna/treadyaparna.github.io",
