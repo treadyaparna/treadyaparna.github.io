@@ -69,7 +69,7 @@ const config: Config = {
       ],
     },
     footer: {
-      style: "dark",
+      style: "light",
       links: [
         // {
         //   title: 'Docs',
@@ -98,7 +98,7 @@ const config: Config = {
       },
       options: {
         // Any mermaid options you like, e.g.:
-        // fontFamily: 'Inter, sans-serif',
+        fontFamily: 'Inter, sans-serif',
         // securityLevel: 'strict',
       },
     },

@@ -14,16 +14,16 @@ The site is deployed on **GitHub Pages**: 👉 [https://treadyaparna.github.io](
 ## 📂 Folder Structure
 
 ```
-├── blog/           # Blog posts (MDX/Markdown)
-├── docs/           # Documentation pages (used as homepage too)
-│   └── intro.md    # Landing page (slug "/")
+├── blog/                   # Blog posts (MDX/Markdown)
+├── docs/                   # Documentation pages (used as homepage too)
+│   └── intro.md            # Landing page (slug "/")
 ├── src/
-│   ├── css/        # Custom CSS overrides
-│   └── components/ # React components (if any)
-├── static/         # Static assets (images, pdfs, etc.)
-│   └── img/        # Images served at /img/*
-├── docusaurus.config.ts # Docusaurus site config
-├── sidebars.ts     # Docs sidebar config
+│   ├── css/                # Custom CSS overrides
+│   └── components/         # React components (if any)
+├── static/                 # Static assets (images, pdfs, etc.)
+│   └── img/                # Images served at /img/*
+├── docusaurus.config.ts    # Docusaurus site config
+├── sidebars.ts             # Docs sidebar config
 └── package.json
 ```
 
