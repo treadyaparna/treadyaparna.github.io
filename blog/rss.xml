@@ -17,6 +17,8 @@
             <content:encoded><![CDATA[<p>A comprehensive <strong>Distributed Data Stream Aggregator</strong> workflow that demonstrates large-scale data aggregation from multiple third-party locations using AWS Step Functions' distributed processing capabilities.</p>
 <p>A key highlight of this solution is its <strong>unique no-Lambda approach</strong>, making it a <strong>low-code (almost no-code)</strong> architecture — with minimal coding required only in the AWS Glue job for final consolidation.</p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="introduction">Introduction<a href="https://treadyaparna.github.io/blog/2025-10-10-distributed-data-stream-aggregator#introduction" class="hash-link" aria-label="Direct link to Introduction" title="Direct link to Introduction" translate="no">​</a></h2>
+<p><img decoding="async" loading="lazy" alt="Serverlessland" src="https://treadyaparna.github.io/assets/images/serverlessland-screenshot-9d6cbdf18302695488c5bc5a5ea7a71b.png" width="1920" height="1080" class="img_ev3q">
+See: <a href="https://serverlessland.com/workflows/distributed-data-stream-aggregator" target="_blank" rel="noopener noreferrer">https://serverlessland.com/workflows/distributed-data-stream-aggregator</a></p>
 <p>When working at scale, coordinating the ingestion of data from many external APIs — with pagination, retries, rate limits, and large payloads — gets complicated fast. The typical solution often leans heavily on AWS Lambda, which brings its own operational and scaling burdens.</p>
 <p>This post walks through a new, Lambda-free pattern contributed to the <a href="https://github.com/aws-samples/step-functions-workflows-collection/pull/404" target="_blank" rel="noopener noreferrer">AWS Step Functions Workflows Collection</a>: a <strong>three-tier, distributed data aggregator</strong> using Step Functions (standard + express), S3, Glue, and DynamoDB. You'll see how to orchestrate high fan-out, handle payload limits, and maintain observability — all with minimal custom code.</p>
 <p>I'll cover:</p>
@@ -218,6 +220,7 @@ Combine Step Functions' built-in execution view with DynamoDB logs and CloudWatc
 <li>Gain real-time visibility with a visual execution view</li>
 </ul>
 <p>Let's dive in.</p>
+<p><img decoding="async" loading="lazy" alt="Brown Bag Speech at Flaconi" src="https://treadyaparna.github.io/assets/images/bb-speech-a4213ea2b9e95410265925dd8d75c259.png" width="1920" height="1080" class="img_ev3q"></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-are-step-functions">What Are Step Functions?<a href="https://treadyaparna.github.io/blog/step-into-step-functions#what-are-step-functions" class="hash-link" aria-label="Direct link to What Are Step Functions?" title="Direct link to What Are Step Functions?" translate="no">​</a></h2>
 <p><strong>AWS Step Functions</strong> is a fully managed <strong>serverless orchestration service</strong>.</p>
 <ul>
