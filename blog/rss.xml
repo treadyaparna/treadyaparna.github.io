@@ -220,7 +220,7 @@ Combine Step Functions' built-in execution view with DynamoDB logs and CloudWatc
 <li>Gain real-time visibility with a visual execution view</li>
 </ul>
 <p>Let's dive in.</p>
-<p><img decoding="async" loading="lazy" alt="Brown Bag Speech at Flaconi" src="https://treadyaparna.github.io/assets/images/bb-speech-a4213ea2b9e95410265925dd8d75c259.png" width="1920" height="1080" class="img_ev3q"></p>
+<p><img decoding="async" loading="lazy" alt="Brown Bag Speech at Flaconi" src="https://treadyaparna.github.io/assets/images/bb-speech-20cd2859666f9fbaec52867c2d1ca583.png" width="1920" height="1080" class="img_ev3q"></p>
 <h2 class="anchor anchorWithStickyNavbar_LWe7" id="what-are-step-functions">What Are Step Functions?<a href="https://treadyaparna.github.io/blog/step-into-step-functions#what-are-step-functions" class="hash-link" aria-label="Direct link to What Are Step Functions?" title="Direct link to What Are Step Functions?" translate="no">​</a></h2>
 <p><strong>AWS Step Functions</strong> is a fully managed <strong>serverless orchestration service</strong>.</p>
 <ul>
